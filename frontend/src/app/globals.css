@@ -1,0 +1,145 @@
+:root {
+  --background-light: #ffffff;
+  --foreground-light: #111827;
+  --primary-light: #3b82f6; /* Blue 500 */
+  --muted-light: #6b7280; /* Gray 500 */
+
+  --background-dark: #1f2937; /* Gray 800 */
+  --foreground-dark: #f3f4f6; /* Gray 100 */
+  --primary-dark: #60a5fa; /* Blue 400 */
+  --muted-dark: #9ca3af; /* Gray 400 */
+
+  --font-sans: var(--font-geist-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: var(--background-light);
+    --foreground: var(--foreground-light);
+    --primary: var(--primary-light);
+    --muted: var(--muted-light);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--background-dark);
+    --foreground: var(--foreground-dark);
+    --primary: var(--primary-dark);
+    --muted: var(--muted-dark);
+  }
+}
+
+/* Default to light theme if no preference */
+@media not (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--background-light);
+    --foreground: var(--foreground-light);
+    --primary: var(--primary-light);
+    --muted: var(--muted-light);
+  }
+}
+
+
+html {
+  color-scheme: light dark; /* Let browser handle scrollbars etc. based on scheme */
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--background);
+  color: var(--foreground);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0; /* Reset default margin */
+  padding: 0; /* Reset default padding */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+main {
+  flex-grow: 1;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--primary); /* Could be a darker/lighter shade */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 0.75em;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.5rem; }
+
+p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+ul, ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* Basic styling for elements that might come from Strapi's Rich Text Editor */
+.strapi-richtext img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.25rem;
+}
+
+.strapi-richtext blockquote {
+  border-left: 4px solid var(--muted);
+  padding-left: 1rem;
+  margin-left: 0;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.strapi-richtext pre {
+  background-color: var(--muted-dark); /* Assuming dark background for code blocks is common */
+  color: var(--foreground-dark);
+  padding: 1rem;
+  border-radius: 0.25rem;
+  overflow-x: auto;
+}
+
+/* Simple button like styling for links */
+.button-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: var(--primary);
+  color: var(--background); /* Text color that contrasts with primary */
+  border-radius: 0.25rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.button-link:hover {
+  opacity: 0.9;
+  text-decoration: none;
+  color: var(--background);
+}

@@ -1,0 +1,58 @@
+.aboutContainer {
+  padding: 1rem 0; /* Adjusted padding */
+}
+
+.aboutContainer h1 {
+  text-align: center;
+  margin-bottom: 2.5rem; /* Increased margin */
+  color: var(--primary);
+}
+
+.section {
+  margin-bottom: 2.5rem; /* Increased margin */
+  padding-bottom: 1.5rem; /* Add padding for separation */
+  border-bottom: 1px solid var(--muted-light); /* Lighter border for sections */
+}
+
+@media (prefers-color-scheme: dark) {
+  .section {
+    border-bottom: 1px solid var(--muted-dark); /* Darker border for sections in dark mode */
+  }
+}
+
+
+.section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.section h2 {
+  font-size: 1.75rem; /* Slightly smaller than Posts H2 */
+  margin-bottom: 1rem;
+  color: var(--foreground); /* Ensure heading color contrasts */
+}
+
+.section p {
+  line-height: 1.7; /* Consistent line height */
+  margin-bottom: 1rem;
+}
+
+/* Placeholder for potential team grid styling */
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.teamMember {
+  padding: 1.5rem;
+  border: 1px solid var(--muted);
+  border-radius: 6px;
+  background-color: var(--background); /* Ensure background for contrast */
+}
+
+.teamMember h3 {
+  margin-top: 0;
+  color: var(--primary);
+}

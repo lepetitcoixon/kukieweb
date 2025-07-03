@@ -1,0 +1,110 @@
+.homeContainer {
+  padding: 2rem 0;
+}
+
+.heroSection {
+  text-align: center;
+  padding: 3rem 1rem;
+  margin-bottom: 3rem;
+  background-color: var(--background-dark); /* Example: use a contrasting background */
+  color: var(--foreground-dark);
+  border-radius: 8px;
+}
+
+.heroSection h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: var(--muted-dark); /* Muted text on dark background */
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.recentPostsSection {
+  margin-top: 3rem;
+}
+
+.recentPostsSection h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--primary);
+  padding-bottom: 0.5rem;
+  display: inline-block; /* To make border only as wide as text */
+}
+
+.postsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+  gap: 2rem;
+}
+
+.postItem {
+  border: 1px solid var(--muted);
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: var(--background); /* Ensure items have background for contrast */
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.postItem:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .postItem:hover {
+    box-shadow: 0 4px 12px rgba(255,255,255,0.08);
+  }
+}
+
+.postItem h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.postTitleLink {
+  color: var(--foreground);
+  text-decoration: none;
+}
+
+.postTitleLink:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.postExcerpt {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  display: -webkit-box; /* For multi-line ellipsis */
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.postDate {
+  color: var(--muted);
+  font-size: 0.8rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.readMoreLink {
+  font-weight: 500;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.readMoreLink:hover {
+  text-decoration: underline;
+}

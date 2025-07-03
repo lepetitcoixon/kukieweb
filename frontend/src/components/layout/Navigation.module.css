@@ -1,0 +1,24 @@
+.nav {
+  /* No specific styles needed for nav element itself currently */
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem; /* Increased gap slightly */
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  color: var(--foreground);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0; /* Add some vertical padding for easier clicking */
+}
+
+.navLink:hover,
+.navLink[aria-current="page"] /* Style for active link if using Next.js <Link> activeClassName or similar logic */ {
+  color: var(--primary);
+  text-decoration: none; /* No underline for nav links, color change is enough */
+}

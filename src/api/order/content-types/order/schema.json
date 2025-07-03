@@ -1,0 +1,80 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order",
+    "description": "Customer order information"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "orderId": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "configurable": false,
+      "private": false
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "orders"
+    },
+    "orderDate": {
+      "type": "datetime",
+      "default": null,
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "processing",
+        "shipped",
+        "delivered",
+        "cancelled",
+        "refunded"
+      ],
+      "default": "pending",
+      "required": true
+    },
+    "totalAmount": {
+      "type": "decimal",
+      "required": true
+    },
+    "items": {
+      "type": "json",
+      "required": true
+    },
+    "shippingAddress": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::address.address"
+    },
+    "billingAddress": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::address.address"
+    },
+    "notes": {
+      "type": "text"
+    }
+  },
+  "lifecycles": {
+    async beforeCreate(event) {
+      const { data } = event.params;
+      if (!data.orderId) {
+        // Generate a simple unique ID: current timestamp + random string
+        // For production, a more robust unique ID generator (e.g., nanoid, ksuid) would be better.
+        data.orderId = `ORD-${Date.now()}-${Math.random().toString(36).substr(2, 5).toUpperCase()}`;
+      }
+      if (!data.orderDate) {
+        data.orderDate = new Date().toISOString();
+      }
+    }
+  }
+}

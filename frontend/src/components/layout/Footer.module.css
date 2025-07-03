@@ -1,0 +1,8 @@
+.footer {
+  padding: 2rem 1rem; /* Increased padding */
+  border-top: 1px solid var(--muted);
+  margin-top: 2rem; /* Keep some space above the footer */
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}

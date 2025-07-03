@@ -1,0 +1,40 @@
+.postArticle {
+  /* Main container for the article */
+}
+
+.postDate {
+  color: var(--muted);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.postExcerpt {
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  border-left: 3px solid var(--primary);
+  padding-left: 1rem;
+}
+
+.postContent {
+  line-height: 1.7; /* Slightly more spacious line height for readability */
+  font-size: 1.05rem; /* Slightly larger base font for content */
+}
+
+.postContent p {
+  margin-bottom: 1.25rem;
+}
+
+.postContent h2,
+.postContent h3,
+.postContent h4 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.backLinkContainer {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--muted);
+}

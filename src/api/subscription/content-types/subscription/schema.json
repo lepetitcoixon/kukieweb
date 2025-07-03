@@ -1,0 +1,85 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subscriptions",
+  "info": {
+    "singularName": "subscription",
+    "pluralName": "subscriptions",
+    "displayName": "Subscription",
+    "description": "User subscription information"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "subscriptionId": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "description": "Usually from the payment provider (e.g., Stripe sub_xxxx)"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "subscriptions"
+    },
+    "planName": {
+      "type": "string",
+      "required": true,
+      "description": "Name of the subscription plan (e.g., Basic, Premium)"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "trialing",
+        "active",
+        "past_due",
+        "canceled",
+        "unpaid",
+        "incomplete",
+        "incomplete_expired"
+      ],
+      "default": "trialing",
+      "required": true,
+      "description": "Subscription status, often synced from payment provider"
+    },
+    "startDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "endDate": {
+      "type": "datetime",
+      "description": "Date when the subscription effectively ends (e.g., after cancellation at period end)"
+    },
+    "currentPeriodStart": {
+        "type": "datetime",
+        "description": "Start of the current billing period"
+    },
+    "currentPeriodEnd": {
+        "type": "datetime",
+        "description": "End of the current billing period (next billing date)"
+    },
+    "cancelAtPeriodEnd": {
+        "type": "boolean",
+        "default": false,
+        "description": "True if the subscription is set to cancel at the end of the current period"
+    },
+    "price": {
+      "type": "decimal",
+      "required": true
+    },
+    "currency": {
+      "type": "string",
+      "required": true,
+      "default": "USD"
+    },
+    "paymentProvider": {
+        "type": "string",
+        "description": "e.g., stripe, paypal"
+    },
+    "metadata": {
+        "type": "json",
+        "description": "Any additional metadata from the payment provider or internal use"
+    }
+  }
+}
